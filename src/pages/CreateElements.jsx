@@ -38,6 +38,7 @@ export const CreateElements = () => {
             <div className="grid grid-cols-2 gap-x-2">
                 <InputWithLabel
                     label={"Page Name"}
+                    inputName={"page_name"}
                     inputValue={inputs.pageName}
                     onChangeHandler={inputHandler}
                 />
