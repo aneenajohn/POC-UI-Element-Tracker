@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import { InputWithLabel, RenderInputDetails  } from '../components';
 
 export const CreateElements = () => {
 
@@ -28,24 +29,21 @@ export const CreateElements = () => {
 
   useEffect(() => {
     console.log("Inputs: ", inputs);
-  },[inputs])
+  },[inputs]);
+
   return (
     <div className="flex flex-col items-center h-screen leading-5 font-mono">
         <h2 className="font-medium text-lg p-4 mb-2 tracking-tight">Create UI elements</h2>
         <form className='font-mono flex flex-col gap-4 w-full items-center'>
-        {/* <form className='font-mono grid grid-cols-2 gap-4'> */}
-            <div className="grid grid-cols-2">
-                <label className="justify-self-end self-center">Page Name: </label>
-                <input
-                    type="text"
-                    name="page_name"
-                    className="p-2 border-2 border-solid rounded-md w-48 sm:w-80"
-                    value={inputs.pageName}
-                    onChange={inputHandler}
+            <div className="grid grid-cols-2 gap-x-2">
+                <InputWithLabel
+                    label={"Page Name"}
+                    inputValue={inputs.pageName}
+                    onChangeHandler={inputHandler}
                 />
             </div>
-            <div className="grid grid-cols-2">
-                <label className="justify-self-end self-center">UI Element Type: </label>
+            <div className="grid grid-cols-2 gap-x-2">
+                <label className="justify-self-end self-center">UI Element Type</label>
                 <select
                     className="p-2 border-2 border-solid rounded-md w-48 sm:w-80"
                     onChange={inputHandler}
@@ -58,8 +56,7 @@ export const CreateElements = () => {
                     <option value="slider">Slider</option>
                 </select>
             </div>
-
-            {}
+            {inputs?.uiElementType ? <RenderInputDetails uiElement={inputs.uiElementType} /> : null}
         </form>
     </div>
   )
