@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Elements = () => {
   return (
-    <div className='text-center font-medium p-8 bg-primary'>Will Render the created UI elements here</div>
+    <div className="flex-grow text-center font-medium py-6">Will Render the created UI elements here</div>
   )
 }
