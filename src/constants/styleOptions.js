@@ -21,3 +21,27 @@ export const btnStyleOptions = [
         value: 'cursor'
     },
 ]
+
+
+export const inputStyleOptions = [
+    {
+        label: 'Width',
+        value: 'width'
+    },
+    {
+        label: 'Text Color',
+        value: 'color'
+    },
+    {
+        label: 'Background Color',
+        value: 'backgroundColor',
+    },
+    {
+        label: 'Font Size',
+        value: 'fontSize'
+    },
+    {
+        label: 'Font Family',
+        value: 'fontFamily'
+    }
+]
