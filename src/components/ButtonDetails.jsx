@@ -52,7 +52,7 @@ export const ButtonDetails = ({buttonAttributes, setButtonAttributes}) => {
       }
       setButtonAttributes({
         ...buttonAttributes,
-        styles: [...buttonAttributes.styles, obj]
+        styles: [...buttonAttributes?.styles, obj]
       })
     }
   }
