@@ -35,7 +35,7 @@ export const CreateElements = () => {
   },[inputs]);
 
   return (
-    <div className="flex flex-col items-center flex-grow leading-5 font-mono">
+    <div className="flex flex-col items-center flex-grow leading-5 font-mono bg-secondary">
         <h2 className="font-medium text-lg p-4 mb-2 tracking-tight">Create UI elements</h2>
         <form className='font-mono flex flex-col gap-4 w-full items-center'>
             <div className="grid grid-cols-2 gap-x-2">
@@ -62,7 +62,7 @@ export const CreateElements = () => {
             </div>
             {inputs?.uiElementType ? <RenderInputDetails uiElement={inputs.uiElementType} /> : null}
             <button
-                className={`px-6 py-4 bg-primary text-text_secondary ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-1'}`}
+                className={`px-6 py-3 bg-primary text-text_secondary mb-4 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-1'}`}
                 disabled={isButtonDisabled}
             >
                 Create
