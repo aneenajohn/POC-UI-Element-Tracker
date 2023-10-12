@@ -2,7 +2,7 @@ import "./main.css";
 import { Route, Routes } from "react-router-dom";
 
 import { CreateElements, Elements } from './pages';
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components";
 
 export default function App() {
   return (

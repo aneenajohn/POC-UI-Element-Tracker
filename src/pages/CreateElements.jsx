@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { InputWithLabel, RenderInputDetails  } from '../components';
+import { InputWithLabel, ButtonDetails, InputDetails } from '../components';
+
+import { BUTTON_INITIAL_VALUES, INPUT_INITIAL_VALUES } from '../constants';
 
 export const CreateElements = () => {
 
@@ -8,7 +10,16 @@ export const CreateElements = () => {
     uiElementType: ""
   });
 
+  const [buttonAttributes, setButtonAttributes] = useState(BUTTON_INITIAL_VALUES)
+
+  const [inputAttributes, setInputAttributes] = useState(INPUT_INITIAL_VALUES)
+
   const [isButtonDisabled, setButtonDisabled] = useState(true);
+
+  const resetUiAttributes = () => {
+    setButtonAttributes(BUTTON_INITIAL_VALUES)
+    setInputAttributes(INPUT_INITIAL_VALUES)
+  }
 
   const inputHandler = (e) => {
     console.log(e.target.value, e.target.name);
@@ -24,6 +35,7 @@ export const CreateElements = () => {
                 ...inputs,
                 uiElementType: e.target.value
             });
+            resetUiAttributes();
             break;
         default:
             return null;
@@ -33,6 +45,10 @@ export const CreateElements = () => {
   useEffect(() => {
     console.log("Inputs: ", inputs);
   },[inputs]);
+
+  useEffect(() => {
+    console.log("Btn Atrr from Create main", buttonAttributes)
+  }, [buttonAttributes])
 
   return (
     <div className="flex flex-col items-center flex-grow leading-5 font-mono bg-secondary">
@@ -60,7 +76,16 @@ export const CreateElements = () => {
                     <option value="slider">Slider</option>
                 </select>
             </div>
-            {inputs?.uiElementType ? <RenderInputDetails uiElement={inputs.uiElementType} /> : null}
+            {inputs?.uiElementType === "button" ? (
+                <ButtonDetails
+                    buttonAttributes={buttonAttributes}
+                    setButtonAttributes={setButtonAttributes}
+                />) : null}
+            {inputs?.uiElementType === "input" ? (
+                <InputDetails
+                    inputAttributes={inputAttributes}
+                    setInputAttributes={setInputAttributes}
+                />) : null}
             <button
                 className={`px-6 py-3 bg-primary text-text_secondary mb-4 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-1'}`}
                 disabled={isButtonDisabled}
