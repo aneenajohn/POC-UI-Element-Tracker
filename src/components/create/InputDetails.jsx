@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { InputWithLabel } from './inputWithLabel';
-import { camelToHyphen } from '../utils/index';
+import { camelToHyphen } from '../../utils/index';
 
-import { inputStyleOptions } from '../constants/styleOptions';
+import { inputStyleOptions } from '../../constants/styleOptions';
 
 export const InputDetails = ({inputAttributes, setInputAttributes}) => {
 
