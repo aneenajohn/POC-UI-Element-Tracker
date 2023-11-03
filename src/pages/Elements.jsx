@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from '../components/Modal'
 import { demoData } from "../MockData";
 
 export const Elements = () => {
   const [showModal,handleShowModal]=useState(false);
-  const [loader,handleLoader]=useState(false)
+  const [loader,handleLoader]=useState(false);
+  const [data,setData]=useState([]);
+  const [elementId,setElementId]=useState('')
 
+
+  useEffect(()=>{
+    setData(demoData);
+  },[]);
   const handleEdit = () => {
     console.log("handle edit");
   }
 
-  const handleDelete = () => {
-    console.log("handle Delete");
-    handleShowModal(true)
-    handleLoader(true)
+  const handleClickDelete = (e,pageName) => {
+    handleShowModal(true);
+    setElementId(pageName)
+    console.log("handle edit",pageName);
+  }
+  const handleDelete = (e) => {
+    handleShowModal(false)
+    handleLoader(true);
   }
   
   return (
@@ -23,7 +33,7 @@ export const Elements = () => {
         Pages and Elements
       </h5>
       <div className="flex gap-2 justify-center text-center font-medium py-6">
-        {demoData.data.map((value) => {
+        {data?.data?.map((value) => {
           return (
             <div className="block w-52 p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" key={value.pageName}>
               <div className="flex flex-row justify-between">
@@ -43,7 +53,7 @@ export const Elements = () => {
                     />
                   </svg>
                 </span>
-                <span className="cursor-pointer" onClick={()=>handleShowModal(true)}>
+                <span className="cursor-pointer" onClick={(e)=>handleClickDelete(e,value.pageName)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
